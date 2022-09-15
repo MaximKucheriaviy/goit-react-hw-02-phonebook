@@ -49,6 +49,14 @@ export class App extends Component {
       return(name.toLowerCase().indexOf(this.state.filter) !== -1);
     })
   }
+
+  deleteContact = (id) => {
+    let newContacts = [...this.state.contacts];
+    newContacts = newContacts.filter(item => item.id !== id);
+    this.setState({
+      contacts: newContacts
+    })
+  }
  
   render(){
     return (
@@ -58,7 +66,7 @@ export class App extends Component {
         </Section>
         <Section title="Contacts">
           <FindContactForm filterChage={this.chageFilter}/>
-          <ContactsList contacts={this.filterContacts()}/>
+          <ContactsList contacts={this.filterContacts()} deleteContact={this.deleteContact}/>
         </Section>
       </div>
     );
