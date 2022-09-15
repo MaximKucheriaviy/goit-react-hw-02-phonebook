@@ -1,0 +1,56 @@
+import { nanoid } from "nanoid";
+import { Component } from "react";
+
+
+export class AddNumberForm extends Component{
+    nameInputId = nanoid();
+    state = {
+        name: '',
+        number: ''
+    }
+    chageHendler = (event) => {
+        const {value, name} = event.target;
+        this.setState({[name]: value})
+    }
+    clearForm = () => {
+        this.setState({
+            name: '',
+            number: ''
+        })
+    }
+    onSubmitHendler = (event) =>{
+        event.preventDefault();
+        this.props.onSubmit(this.state);
+        this.clearForm();
+    }
+    render(){
+        return(
+            <form onSubmit={this.onSubmitHendler}>
+                <label htmlFor={this.nameInputId}>Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                    id={this.nameInputId}
+                    required
+                    onChange={this.chageHendler}
+                    value={this.state.name}
+                /> 
+                <br />
+                <label htmlFor={this.nameInputId}>Telephone</label>  
+                <input
+                    type="tel"
+                    name="number"
+                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                    title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                    required
+                    onChange={this.chageHendler}
+                    value={this.state.number}
+                />
+                <br />
+                <button type="submit" disabled={this.state.name === "" || this.state.number === ""}>Add contact</button>
+        </form>
+        )
+    }
+}
