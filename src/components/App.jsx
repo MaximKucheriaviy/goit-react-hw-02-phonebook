@@ -46,13 +46,12 @@ export class App extends Component {
       return(this.state.contacts)
     }
     return this.state.contacts.filter(({name}) => {
-      return(name.toLowerCase().indexOf(this.state.filter) !== -1);
+      return(name.toLowerCase().includes(this.state.filter));
     })
   }
 
   deleteContact = (id) => {
-    let newContacts = [...this.state.contacts];
-    newContacts = newContacts.filter(item => item.id !== id);
+    const newContacts = this.state.contacts.filter(item => item.id !== id);
     this.setState({
       contacts: newContacts
     })
