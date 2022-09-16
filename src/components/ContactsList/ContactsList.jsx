@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { ContactList } from "./ContactsList.styled"
-
+import PropTypes from "prop-types";
 export class ContactsList extends Component{
     render(){
         return(
@@ -19,4 +19,12 @@ export class ContactsList extends Component{
             </ContactList>
         )
     }
+}
+
+ContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    number: PropTypes.string,
+  }))
 }

@@ -1,6 +1,7 @@
 import { Component } from "react"
 import { nanoid } from "nanoid";
 import {VerticalForm} from "./FindContactForm.styled"
+import PropTypes from "prop-types";
 
 export class FindContactForm extends Component{
     nameId = nanoid();
@@ -29,4 +30,9 @@ export class FindContactForm extends Component{
             </VerticalForm>
         )
     }
+}
+
+
+FindContactForm.propTypes = {
+    filterChage: PropTypes.func
 }

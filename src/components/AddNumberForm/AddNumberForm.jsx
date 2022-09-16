@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { Component } from "react";
 import { AddForm } from "./AddNumberForm.styled"
+import PropTypes from "prop-types";
 
 
 export class AddNumberForm extends Component{
@@ -56,4 +57,8 @@ export class AddNumberForm extends Component{
             </AddForm>
         )
     }
+}
+
+AddNumberForm.propTypes = {
+    onSubmit: PropTypes.func
 }
