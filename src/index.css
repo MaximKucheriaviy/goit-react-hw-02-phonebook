@@ -16,6 +16,11 @@ ul, ol{
 }
 
 
+h1, h2{
+  margin: 0;
+  margin-bottom: 10px;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

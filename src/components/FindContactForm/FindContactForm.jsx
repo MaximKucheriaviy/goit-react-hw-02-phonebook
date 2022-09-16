@@ -1,6 +1,10 @@
 import { Component } from "react"
+import { nanoid } from "nanoid";
+import {VerticalForm} from "./FindContactForm.styled"
 
 export class FindContactForm extends Component{
+    nameId = nanoid();
+
     state = {
         name: ""
     }
@@ -13,17 +17,16 @@ export class FindContactForm extends Component{
 
     render(){
         return(
-            <form>
-                <label>
-                    Find contacts by name
-                    <input 
-                        type="text" 
-                        name="name"
-                        value={this.state.name}
-                        onChange={this.chageHendler}
-                    />
-                </label>
-            </form>
+            <VerticalForm>
+                <label htmlFor={this.nameId}>Find contacts by name</label>
+                <input 
+                    id={this.nameId}
+                    type="text" 
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.chageHendler}
+                />
+            </VerticalForm>
         )
     }
 }

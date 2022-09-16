@@ -1,9 +1,11 @@
 import { nanoid } from "nanoid";
 import { Component } from "react";
+import { AddForm } from "./AddNumberForm.styled"
 
 
 export class AddNumberForm extends Component{
     nameInputId = nanoid();
+    telephoneInputId = nanoid();
     state = {
         name: '',
         number: ''
@@ -25,7 +27,7 @@ export class AddNumberForm extends Component{
     }
     render(){
         return(
-            <form onSubmit={this.onSubmitHendler}>
+            <AddForm onSubmit={this.onSubmitHendler}>
                 <label htmlFor={this.nameInputId}>Name</label>
                 <input
                     type="text"
@@ -38,7 +40,7 @@ export class AddNumberForm extends Component{
                     value={this.state.name}
                 /> 
                 <br />
-                <label htmlFor={this.nameInputId}>Telephone</label>  
+                <label htmlFor={this.telephoneInputId}>Telephone</label>  
                 <input
                     type="tel"
                     name="number"
@@ -47,10 +49,11 @@ export class AddNumberForm extends Component{
                     required
                     onChange={this.chageHendler}
                     value={this.state.number}
+                    id={this.telephoneInputId}
                 />
                 <br />
                 <button type="submit" disabled={this.state.name === "" || this.state.number === ""}>Add contact</button>
-        </form>
+            </AddForm>
         )
     }
 }
